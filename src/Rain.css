@@ -1,0 +1,135 @@
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #202020, #111119);
+}
+
+.rain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+  pointer-events: none;
+  overflow: hidden;
+  transform: rotate(-6deg);
+  transform-origin: top left;
+}
+.rain.back-row {
+  display: none;
+  z-index: 1;
+  bottom: 60px;
+  opacity: 0.5;
+}
+body.back-row-toggle .rain.back-row {
+  display: block;
+}
+.drop {
+  position: absolute;
+  top: -10%;
+  width: 2px;
+  height: 120px;
+  animation: drop 1s linear infinite;
+  pointer-events: none;
+}
+@keyframes drop {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(120vh); opacity: 0; }
+}
+.stem {
+  width: 2px;
+  height: 60%;
+  margin: 0 auto;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(255,255,255,0.4));
+  animation: stem 1s linear infinite;
+}
+@keyframes stem {
+  0% { opacity: 1; }
+  70% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.splat {
+  width: 10px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  margin: auto;
+  transform: scale(0);
+  animation: splat 1s ease-out infinite;
+  display: none;
+}
+
+body.splat-toggle .splat {
+  display: block;
+}
+
+@keyframes splat {
+  80% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+
+.toggles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+}
+
+.toggle {
+  position: absolute;
+  left: 20px;
+  width: 50px;
+  height: 50px;
+  line-height: 51px;
+  box-sizing: border-box;
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 10px;
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.toggle:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.toggle:active {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.toggle.active {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.splat-toggle {
+  top: 20px;
+}
+
+.back-row-toggle {
+  top: 90px;
+  line-height: 12px;
+  padding-top: 14px;
+}
+
+.single-toggle {
+  top: 160px;
+}
+
+body.single-toggle .drop {
+  display: none;
+}
+
+body.single-toggle .drop:nth-child(10) {
+  display: block;
+}
